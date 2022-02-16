@@ -4,10 +4,15 @@ function getAllTasks( db = conn ){
   return db('tasks')
 }
 
-function getTasksById( id, db = conn ){
+function getTaskById( id, db = conn ){
   return db('tasks')
   .where( 'id', id )
   .first()
+}
+
+function addTask(task, db = conn){
+  return db('tasks')
+  .insert( task )
 }
 
 function updateTask(updatedTask, db = conn ){
@@ -29,7 +34,8 @@ function deleteTask( id, db = conn ){
 
 module.exports ={
   getAllTasks,
-  getTasksById,
+  getTaskById,
+  addTask,
   updateTask,
   deleteTask
 }
